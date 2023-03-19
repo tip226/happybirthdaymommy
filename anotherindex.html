@@ -1,51 +1,90 @@
+Sure, I can help you write the slideshow code. Here is an example:
+
+```html
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Happy Birthday Mom!</title>
 	<style>
 		body {
+			background-color: #f3d6d6;
 			font-family: Arial, sans-serif;
-			background-color: #FFC0CB;
-			color: #FFFFFF;
+			font-size: 20px;
 			text-align: center;
-			padding-top: 50px;
 		}
-		
 		h1 {
-			font-size: 36px;
-			margin-bottom: 20px;
-			color: #FFFFFF;
-			text-shadow: 2px 2px #FF1493;
-		}
-		
-		p {
-			font-size: 24px;
-			line-height: 1.5;
-			margin-bottom: 30px;
-			color: #FFFFFF;
-			text-shadow: 2px 2px #FF1493;
-		}
-		
-		#cake {
+			color: #f00;
+			font-size: 50px;
 			margin-top: 50px;
+		}
+		p {
+			color: #000;
+			font-size: 30px;
+			margin-top: 50px;
+		}
+		button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin-top: 50px;
+			border-radius: 12px;
+			border: none;
+			cursor: pointer;
+		}
+		#countdown {
+			color: #f00;
+			font-size: 50px;
+			margin-top: 50px;
+		}
+		#slideshow {
+			margin-top: 50px;
+			display: none;
 		}
 	</style>
 </head>
 <body>
 	<h1>Happy Birthday Mom!</h1>
-	<p>Dear Mom,</p>
-	<p>On this special day, I want to wish you a very happy birthday! You mean the world to me, and I'm so grateful for everything you do. I hope this year brings you lots of love, happiness, and good health.</p>
-	<div id="cake">
-		<img src="https://cdn.pixabay.com/photo/2018/03/28/15/45/cake-3266109_960_720.png" alt="birthday cake" width="300">
+	<p>Wishing you a wonderful day filled with love and happiness.</p>
+	<button onclick="startMusicAndSlideshow()">Start Music and Slideshow</button>
+	<audio id="myAudio" src="uoc_mo_cua_me.mp3"></audio>
+	<div id="countdown"></div>
+	<div id="slideshow">
+		<img src="images/photo1.jpg" alt="Image 1" width="500" height="500">
+		<p>Message 1</p>
+		<img src="images/photo2.jpg" alt="Image 2" width="500" height="500">
+		<p>Message 2</p>
+		<img src="images/photo3.jpg" alt="Image 3" width="500" height="500">
+		<p>Message 3</p>
 	</div>
-	<p>Love always,</p>
-	<p>Your favorite child</p>
-	
 	<script>
-		// Optional JavaScript for interactive elements
-		document.querySelector('#cake').addEventListener('click', function() {
-			alert('Make a wish and blow out the candles!');
-		});
+		function startMusicAndSlideshow() {
+			var x = document.getElementById("myAudio");
+			x.play();
+			document.getElementById("countdown").innerHTML = getCountdown();
+			document.getElementById("slideshow").style.display = "block";
+			// Add your fireworks animation code here
+			// Add your countdown timer code here
+			// Add your slideshow code here
+		}
+
+		function getCountdown() {
+			var birthday = new Date("April 30, 1975 00:00:00").getTime();
+			var now = new Date().getTime();
+			var difference = now - birthday;
+			var years = Math.floor(difference / (1000 * 60 * 60 * 24 * 365.25));
+			var months = Math.floor((difference % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
+			var days = Math.floor((difference % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((difference % (1000 * 60)) / 1000);
+			return years + " years, " + months + " months, " + days + " days, " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds";
+		}
 	</script>
 </body>
 </html>
+```
+In this example, I have added a `<div>` tag with the `id` attribute set to `slideshow` that contains `<img>` tags with the `src` attribute set to the URL of the image files and `<p>` tags with the message. The `display` attribute of the `<div>` tag is set to `none` so that the slideshow
